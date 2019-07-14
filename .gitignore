@@ -1,2 +1,3 @@
-*.class
+/bin/domaine/*.class
+/bin/presentation/*.class
 /images
