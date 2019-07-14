@@ -1,5 +1,7 @@
 package domaine;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author PapiH4ck3R
@@ -7,7 +9,8 @@ package domaine;
  * @version 0.0.1
  *  
  */
-public class Admin 
+@SuppressWarnings("serial")
+public class Admin implements Serializable 
 {
 	private int id;
 	private String nom;
@@ -47,5 +50,10 @@ public class Admin
 	public void setPrenom(String prenom) 
 	{
 		this.prenom = prenom;
+	}
+	
+	public String toString() 
+	{
+		return this.prenom + " " + this.nom + " (n°ID : " + this.id + ")";
 	}
 }

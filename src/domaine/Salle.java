@@ -1,5 +1,7 @@
 package domaine;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author PapiH4ck3R
@@ -7,7 +9,8 @@ package domaine;
  * @version 0.0.1
  *  
  */
-public class Salle 
+@SuppressWarnings("serial")
+public class Salle implements Serializable
 {
 	private String numSalle;
 	private String nomSalle;
@@ -36,5 +39,10 @@ public class Salle
 	public void setNomSalle(String nomSalle) 
 	{
 		this.nomSalle = nomSalle;
+	}
+	
+	public String toString() 
+	{
+		return this.nomSalle + " (N°" + this.numSalle + ")";
 	}
 }

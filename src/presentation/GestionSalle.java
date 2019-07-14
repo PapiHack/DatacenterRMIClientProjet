@@ -31,7 +31,7 @@ public class GestionSalle extends JFrame implements ActionListener
 	{
 		 this.objetDistant = objetServeur;
 		 this.lnum = new JLabel("N° salle : ");
-		 this.lnom = new JLabel("Nom salle: ");
+		 this.lnom = new JLabel("Nom salle : ");
 		 this.chnom =new JTextField();
 		 this.chnum = new JTextField();
 		 this.aj = new JButton("Enregistrer");
@@ -49,13 +49,13 @@ public class GestionSalle extends JFrame implements ActionListener
 		 pan1=new JPanel();
 		 pan2=new JPanel();
 		 pan3=new JPanel();
-		 pan1.setLayout(new GridLayout(1,3));
+		 pan1.setLayout(new GridLayout(1,2));
 		 pan1.add(lnum);
+		 pan1.add(chnum);
 		 pan1.add(rec);
-		 pan2.setLayout(new GridLayout(3,2));
+		 pan2.setLayout(new GridLayout(2,1));
 		 pan2.add(lnom);
 		 pan2.add(chnom);
-		 pan2.add(chnum);
 		 pan3.add(aj);
 		 pan3.add(aff);
 		 pan3.add(qt);

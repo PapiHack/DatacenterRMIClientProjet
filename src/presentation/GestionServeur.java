@@ -23,21 +23,45 @@ public class GestionServeur extends JFrame implements ActionListener
 {
 	private DataInterface objetDistant;
 	private JLabel lnum, lnom, ladmin, lsalle;
-	private JTextField chnum, chnom, chadmin, chsalle;
+	private JTextField chnum, chnom;
+	@SuppressWarnings("rawtypes")
+	private JComboBox chadmin, chsalle;
 	private JButton aj, qt, aff, rec, sup, mod;
 	private JPanel pan1, pan2, pan3;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public GestionServeur(DataInterface objetServeur) 
 	{
 		 this.objetDistant = objetServeur;
 		 this.lnum = new JLabel("N° serveur : ");
-		 this.lnom = new JLabel("Nom serveur: ");
-		 this.ladmin = new JLabel("Admin: ");
-		 this.lsalle = new JLabel("Salle: ");
-		 this.chnom =new JTextField();
+		 this.lnom = new JLabel("Nom serveur : ");
+		 this.ladmin = new JLabel("Admin : ");
+		 this.lsalle = new JLabel("Salle : ");
+		 this.chnom = new JTextField();
 		 this.chnum = new JTextField();
-		 this.chadmin =new JTextField();
-		 this.chsalle = new JTextField();
+		 this.chadmin = new JComboBox();
+		 this.chsalle = new JComboBox();
+		 
+		 try 
+		 {
+			 ArrayList<Admin> listeAdmin = this.objetDistant.findAllAdmin();
+			 ArrayList<Salle> listeSalle = this.objetDistant.findAllSalle();
+			 
+			 for (Admin admin : listeAdmin) 
+			 {
+				 this.chadmin.addItem(admin);
+			 }
+			 
+			 for (Salle salle : listeSalle) 
+			 {
+				 this.chsalle.addItem(salle);
+			 }
+		 }
+		 catch(RemoteException re) 
+		 {
+			 System.out.println(re.getMessage());
+		 }
+		 
 		 this.aj = new JButton("Enregistrer");
 		 this.qt = new JButton("Quitter");
 		 this.rec = new JButton("Rechercher");
@@ -53,16 +77,16 @@ public class GestionServeur extends JFrame implements ActionListener
 		 pan1=new JPanel();
 		 pan2=new JPanel();
 		 pan3=new JPanel();
-		 pan1.setLayout(new GridLayout(1,3));
+		 pan1.setLayout(new GridLayout(1,2));
 		 pan1.add(lnum);
+		 pan1.add(chnum);
 		 pan1.add(rec);
-		 pan1.add(ladmin);
-		 pan1.add(lsalle);
 		 pan2.setLayout(new GridLayout(3,2));
 		 pan2.add(lnom);
 		 pan2.add(chnom);
-		 pan2.add(chnum);
+		 pan2.add(ladmin);
 		 pan2.add(chadmin);
+		 pan2.add(lsalle);
 		 pan2.add(chsalle);
 		 pan3.add(aj);
 		 pan3.add(aff);
@@ -89,14 +113,14 @@ public class GestionServeur extends JFrame implements ActionListener
 		{
 			try 
 			{
-				Admin admin = this.objetDistant.findAdminById(Integer.parseInt(this.chadmin.getText()));
-				Salle salle = this.objetDistant.findSalleById(this.chsalle.getText());
+				Admin admin = this.objetDistant.findAdminById(((Admin) (this.chadmin.getSelectedItem())).getId());
+				Salle salle = this.objetDistant.findSalleById(((Salle) (this.chsalle.getSelectedItem())).getNumSalle());
 				Serveur serveur = new Serveur(chnum.getText(), chnom.getText(), admin, salle);
 				this.objetDistant.addServeur(serveur);
 				this.chnum.setText("");
 				this.chnom.setText("");
-				this.chadmin.setText("");
-				this.chsalle.setText("");
+				this.chadmin.setSelectedIndex(0);
+				this.chsalle.setSelectedIndex(0);
 			}
 			catch(RemoteException re) 
 			{
@@ -121,14 +145,14 @@ public class GestionServeur extends JFrame implements ActionListener
 			this.chnum.setEnabled(false);
 			try 
 			{
-				Admin admin = this.objetDistant.findAdminById(Integer.parseInt(this.chadmin.getText()));
-				Salle salle = this.objetDistant.findSalleById(this.chsalle.getText());
+				Admin admin = this.objetDistant.findAdminById(((Admin) (this.chadmin.getSelectedItem())).getId());
+				Salle salle = this.objetDistant.findSalleById(((Salle) (this.chsalle.getSelectedItem())).getNumSalle());
 				Serveur serveur = new Serveur(this.chnum.getText(), this.chnom.getText(), admin, salle);
 				this.objetDistant.updateServeur(serveur);
 				this.chnum.setText("");
 				this.chnom.setText("");
-				this.chadmin.setText("");
-				this.chsalle.setText("");
+				this.chadmin.setSelectedIndex(0);
+				this.chsalle.setSelectedIndex(0);
 				
 			}
 			catch(RemoteException re) 
@@ -150,8 +174,8 @@ public class GestionServeur extends JFrame implements ActionListener
 					this.chnum.setText(serveur.getNumServ());
 					this.chnum.setEnabled(false);
 					this.chnom.setText(serveur.getNomServ());
-					this.chadmin.setText(String.valueOf(serveur.getAdmin().getId()));
-					this.chsalle.setText(serveur.getNumServ());
+					this.chadmin.setSelectedItem(serveur.getAdmin());
+					this.chsalle.setSelectedItem(serveur.getSalle());
    					this.mod.setEnabled(true);
    					this.sup.setEnabled(true);
 				}
@@ -169,8 +193,8 @@ public class GestionServeur extends JFrame implements ActionListener
 				this.objetDistant.removeServeur(num);;
 				this.chnum.setText("");
 				this.chnom.setText("");
-				this.chadmin.setText("");
-				this.chsalle.setText("");
+				this.chadmin.setSelectedIndex(0);;
+				this.chsalle.setSelectedIndex(0);
 				this.sup.setEnabled(false);
 			}
 			catch(RemoteException re) 

@@ -33,8 +33,8 @@ public class GestionAdmin extends JFrame implements ActionListener
 		 this.lid = new JLabel("Identifiant : ");
 		 this.lnom = new JLabel("Nom : ");
 		 this.lprenom = new JLabel("Prénom : ");
-		 chid= new JTextField(40);
-		 chnom=new JTextField();
+		 chid = new JTextField(40);
+		 chnom = new JTextField();
 		 chprenom = new JTextField();
 		 this.aj = new JButton("Enregistrer");
 		 this.qt = new JButton("Quitter");
@@ -48,9 +48,9 @@ public class GestionAdmin extends JFrame implements ActionListener
 		 this.mod.addActionListener(this);
 		 this.rec.addActionListener(this);
 		 this.sup.addActionListener(this);
-		 pan1=new JPanel();
-		 pan2=new JPanel();
-		 pan3=new JPanel();
+		 pan1 = new JPanel();
+		 pan2 = new JPanel();
+		 pan3 = new JPanel();
 		 pan1.setLayout(new GridLayout(1,3));
 		 pan1.add(lid);
 		 pan1.add(chid);

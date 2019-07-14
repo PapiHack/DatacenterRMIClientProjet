@@ -1,5 +1,7 @@
 package domaine;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author PapiH4ck3R
@@ -7,7 +9,8 @@ package domaine;
  * @version 0.0.1
  *  
  */
-public class Serveur 
+@SuppressWarnings("serial")
+public class Serveur implements Serializable
 {
 	private String numServ;
 	private String nomServ;

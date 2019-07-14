@@ -47,12 +47,12 @@ public class ListeServeur extends JFrame implements ActionListener
 			  modele.addRow( new Object[0]);
 			  modele.setValueAt(String.valueOf(serveur.getNumServ()), ligne, 0);
 			  modele.setValueAt(serveur.getNomServ(), ligne, 1);
-			  modele.setValueAt(serveur.getAdmin().getPrenom() + " " + serveur.getAdmin().getNom(), ligne, 2);
-			  modele.setValueAt(serveur.getSalle().getNumSalle(), ligne, 3);
+			  modele.setValueAt(serveur.getAdmin(), ligne, 2);
+			  modele.setValueAt(serveur.getSalle(), ligne, 3);
 			  ligne++;
 		  }
 		 
-		  setTitle("Client RMI : liste des salles");
+		  setTitle("Client RMI : liste des serveurs");
 		  setSize(550,500);
 		  qt.addActionListener(this); 
 		  pan1.add(sc);
