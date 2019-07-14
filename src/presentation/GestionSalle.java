@@ -109,7 +109,7 @@ public class GestionSalle extends JFrame implements ActionListener
 			Salle salle = new Salle(chnum.getText(), chnom.getText());
 			try 
 			{
-				this.objetDistant.updateSalle(salle);;
+				this.objetDistant.updateSalle(salle);
 				this.chnum.setText("");
 				this.chnom.setText("");
 				
