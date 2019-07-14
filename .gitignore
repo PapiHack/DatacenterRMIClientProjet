@@ -1,2 +1,2 @@
-bin/domaine/*.class
-bin/presentation/*.class
+/bin/domaine/*.class
+/bin/presentation/*.class
