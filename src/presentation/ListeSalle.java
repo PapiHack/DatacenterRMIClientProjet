@@ -65,7 +65,7 @@ public class ListeSalle extends JFrame implements ActionListener
 		if(event.getSource() == qt) 
 		{
 			this.dispose();
-			new Client(this.objetDistant);
+			new GestionSalle(this.objetDistant);
 		}
 	}
 

@@ -70,6 +70,7 @@ public class Client extends JFrame implements ActionListener
 		this.setSize(900, 700);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setResizable(false);
+		this.setVisible(true);
 	}
 
 	@Override
@@ -77,38 +78,33 @@ public class Client extends JFrame implements ActionListener
 	{
 		if(event.getSource() == this.gAdmin) 
 		{
-			GestionAdmin gestionAdmin = new GestionAdmin(this.objetDistant);
-			gestionAdmin.setVisible(true);
+			new GestionAdmin(this.objetDistant);
 		}
 		
 		if(event.getSource() == this.gSalle) 
 		{
-			GestionSalle gestionSalle = new GestionSalle(this.objetDistant);
-			gestionSalle.setVisible(true);
+			new GestionSalle(this.objetDistant);
 		}
 		
 		if(event.getSource() == this.gServeur) 
 		{
-			GestionServeur gestionServeur = new GestionServeur(this.objetDistant);
-			gestionServeur.setVisible(true);
+			new GestionServeur(this.objetDistant);
 		}
 		
 		if(event.getSource() == this.gServeurByAdmin) 
 		{
-			ListeServeurParAdmin listeServeurParAdmin = new ListeServeurParAdmin(this.objetDistant);
-			listeServeurParAdmin.setVisible(true);
+			new ListeServeurParAdmin(this.objetDistant);
 		}
 		
 		if(event.getSource() == this.gServeurBySalle) 
 		{
-			ListeServeurParSalle listeServeurParSalle = new ListeServeurParSalle(this.objetDistant);
-			listeServeurParSalle.setVisible(true);
+			new ListeServeurParSalle(this.objetDistant);
 		}
 	}
 	
 	public static void main(String args[]) throws Exception
 	{
-		/*SplashScreen.getInstance("images/ibm-serveur-bis.png");
+		SplashScreen.getInstance("images/ibm-serveur-bis.png");
 		
 		try 
 		{
@@ -118,12 +114,12 @@ public class Client extends JFrame implements ActionListener
 		catch(InterruptedException e)
 		{
 			e.printStackTrace();
-		}*/
+		}
 		
 		try 
 		{
 			DataInterface objetServeur = (DataInterface) Naming.lookup("rmi://localhost:1099/DAO");
-			new Client(objetServeur).setVisible(true);
+			new Client(objetServeur);
 		}
 		catch(Exception ex) 
 		{

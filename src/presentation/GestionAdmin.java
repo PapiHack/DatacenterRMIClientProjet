@@ -74,7 +74,7 @@ public class GestionAdmin extends JFrame implements ActionListener
 	   	 setLocationRelativeTo(null);
 	   	 sup.setEnabled(false);
 	   	 mod.setEnabled(false);
-	   	 setVisible(true);
+	   	 this.setVisible(true);
 	 }
 
 	@Override
@@ -169,7 +169,7 @@ public class GestionAdmin extends JFrame implements ActionListener
 		else if(event.getSource() == qt) 
 		{
 			this.dispose();
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 

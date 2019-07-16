@@ -22,11 +22,11 @@ public class ListeAdmin extends JFrame implements ActionListener
 	private JScrollPane sc;
 	private JPanel pan1, pan2;
 	private JButton qt;
-    private DataInterface objetDistant;
+	private DataInterface objetDistant;
     
-    public ListeAdmin(ArrayList <Admin> liste, DataInterface objetDistant) 
+    public ListeAdmin(ArrayList <Admin> liste, DataInterface objetServeur) 
     {
-    	this.objetDistant = objetDistant;
+    	this.objetDistant = objetServeur;
     	this.pan1 = new JPanel();
     	this.pan2 = new JPanel();
 		this.qt = new JButton("Quitter");
@@ -67,7 +67,7 @@ public class ListeAdmin extends JFrame implements ActionListener
 		if(event.getSource() == qt) 
 		{
 			this.dispose();
-			new Client(this.objetDistant);
+			new GestionAdmin(this.objetDistant);
 		}
 	}
 

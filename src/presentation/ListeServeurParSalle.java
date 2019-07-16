@@ -91,7 +91,7 @@ public class ListeServeurParSalle extends JFrame implements ActionListener, Item
 		if(event.getSource() == qt) 
 		{
 			this.dispose();
-			new Client(this.objetDistant);
+			//new Client(this.objetDistant);
 		}
 	}
 

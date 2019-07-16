@@ -147,7 +147,7 @@ public class GestionSalle extends JFrame implements ActionListener
 			String num = this.chnum.getText();
 			try 
 			{
-				this.objetDistant.removeSalle(num);;
+				this.objetDistant.removeSalle(num);
 				this.chnum.setText("");
 				this.chnom.setText("");
 				this.sup.setEnabled(false);
@@ -160,7 +160,7 @@ public class GestionSalle extends JFrame implements ActionListener
 		else if(event.getSource() == qt) 
 		{
 			this.dispose();
-			System.exit(0);
+			//System.exit(0);
 		}
 	}
 

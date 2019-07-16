@@ -190,10 +190,10 @@ public class GestionServeur extends JFrame implements ActionListener
 			String num = this.chnum.getText();
 			try 
 			{
-				this.objetDistant.removeServeur(num);;
+				this.objetDistant.removeServeur(num);
 				this.chnum.setText("");
 				this.chnom.setText("");
-				this.chadmin.setSelectedIndex(0);;
+				this.chadmin.setSelectedIndex(0);
 				this.chsalle.setSelectedIndex(0);
 				this.sup.setEnabled(false);
 			}
@@ -205,7 +205,7 @@ public class GestionServeur extends JFrame implements ActionListener
 		else if(event.getSource() == qt) 
 		{
 			this.dispose();
-			System.exit(0);
+			//System.exit(0);
 		}
 		
 	}

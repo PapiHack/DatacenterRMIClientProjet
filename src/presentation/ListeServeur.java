@@ -70,7 +70,7 @@ public class ListeServeur extends JFrame implements ActionListener
 		if(event.getSource() == qt) 
 		{
 			this.dispose();
-			new Client(this.objetDistant);
+			new GestionServeur(this.objetDistant);
 		}
 	}
 
